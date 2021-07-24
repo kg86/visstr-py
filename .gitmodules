@@ -1,0 +1,3 @@
+[submodule "visstr"]
+	path = visstr
+	url = https://github.com/kg86/visstr.git
