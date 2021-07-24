@@ -12,6 +12,10 @@ This is python binding of string visualizer [visstr](https://github.com/kg86/vis
 $ pip install .
 ```
 
+# Example
+
+see [example](examples/occ.ipynb).
+
 # Build (for Developer)
 
 ```bash
