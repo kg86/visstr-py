@@ -10,14 +10,16 @@ display(Javascript(lib_src))
 
 
 def visstr(s, ranges):
-    template = """
-    <canvas id="visstr_canvas_{}" style="border: 1px solid #000000; background-color: white"></canvas>
+    global num_canvas
+    html = f"""
+    <script type="text/javascript" src="{lib_path}"></script>
+    <canvas id="visstr_canvas_{num_canvas}" style="border: 1px solid #000000; background-color: white"></canvas>
     <script type="text/javascript">
     (function (){{
-      const canvas = document.getElementById("visstr_canvas_{}")
-      const s = "{}"
+      const canvas = document.getElementById("visstr_canvas_{num_canvas}")
+      const s = "{s}"
       const vstr = new visstr.VisStr(canvas)
-      const range_groups = vstr.makeGroupRangesAutoColor({}, "arrow")
+      const range_groups = vstr.makeGroupRangesAutoColor({ranges}, "arrow")
       const ranges = range_groups
         .map((x) => vstr.nonOverlapRanges(x))
         .reduce((acm, x) => acm.concat(x), [])
@@ -25,7 +27,7 @@ def visstr(s, ranges):
     }})()
     </script>
     """
-    global num_canvas
-    html = template.format(num_canvas, num_canvas, s, ranges)
+    # print(html)
+    # html = template.format(num_canvas, num_canvas, s, ranges)
     num_canvas += 1
     return HTML(html)
