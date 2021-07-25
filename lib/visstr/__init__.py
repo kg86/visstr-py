@@ -13,9 +13,6 @@ num_canvas = 0
 lib_local = os.path.join(os.path.dirname(os.path.abspath(__file__)), "vis_str.umd.js")
 lib_url = "https://unpkg.com/visstr@0.0.5/lib/vis_str.umd.js"
 lib_path = lib_url if IN_COLAB else lib_local
-# lib_src = open(lib_path, "r").read()
-
-# display(Javascript(lib_src))
 
 
 def visstr(s, ranges):
@@ -36,7 +33,5 @@ def visstr(s, ranges):
     }})()
     </script>
     """
-    # print(html)
-    # html = template.format(num_canvas, num_canvas, s, ranges)
     num_canvas += 1
     return HTML(html)

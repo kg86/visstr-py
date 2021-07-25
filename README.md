@@ -15,10 +15,3 @@ $ pip install .
 # Example
 
 see [example](examples/occ.ipynb).
-
-# Build (for Developer)
-
-```bash
-# build vis_str.umd.js, and move it to lib/visstr/vis_str.umd.js
-$ bash buildjs.sh
-```
