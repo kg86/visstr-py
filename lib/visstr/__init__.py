@@ -13,6 +13,16 @@ try:
 except:
     IN_COLAB = False
 
+# Each cell in google colaboratory is hosted by iframe,
+# but one in Jupyter is not.
+# Due to this difference, we read visstr JS library in
+# a different way for each environment.
+# If the library is called in google colaboratory,
+# we insert script tag to read the library into each cell.
+# If the library is called in Jupyter,
+# we insert script tag only once when the library is imported,
+# and the code is shared to all cells.
+
 if not IN_COLAB:
     display(Javascript(open(lib_local, "r").read()))
 
