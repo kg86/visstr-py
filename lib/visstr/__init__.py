@@ -1,12 +1,21 @@
 import os
 from IPython.display import HTML, display, Javascript
 
+try:
+    import google.colab
+
+    IN_COLAB = True
+except:
+    IN_COLAB = False
+
 num_canvas = 0
 
-lib_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "vis_str.umd.js")
-lib_src = open(lib_path, "r").read()
+lib_local = os.path.join(os.path.dirname(os.path.abspath(__file__)), "vis_str.umd.js")
+lib_url = "https://unpkg.com/visstr@0.0.5/lib/vis_str.umd.js"
+lib_path = lib_url if IN_COLAB else lib_local
+# lib_src = open(lib_path, "r").read()
 
-display(Javascript(lib_src))
+# display(Javascript(lib_src))
 
 
 def visstr(s, ranges):
