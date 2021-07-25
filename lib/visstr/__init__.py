@@ -17,8 +17,13 @@ if not IN_COLAB:
     display(Javascript(open(lib_local, "r").read()))
 
 
-def Str(s, ranges):
-    global num_canvas
+def Str(s, ranges, font_size=32, width=None, height=None):
+    img_style_dic = dict()
+    if width:
+        img_style_dic["width"] = f"{width}px"
+    if height:
+        img_style_dic["height"] = f"{height}px"
+    img_style = "; ".join([f"{k}: {v}" for k, v in img_style_dic.items()])
 
     canvas_id = uuid.uuid4()
     img_id = uuid.uuid4()
@@ -26,12 +31,12 @@ def Str(s, ranges):
 
     html += f"""
     <canvas id="{canvas_id}" style="display:none; border: 1px solid #000000; background-color: white"></canvas>
-    <img id="{img_id}" />
+    <img id="{img_id}" style="{img_style}"/>
     <script type="text/javascript">
     (function (){{
       const canvas = document.getElementById("{canvas_id}")
       const s = "{s}"
-      const vstr = new visstr.VisStr(canvas, 64)
+      const vstr = new visstr.VisStr(canvas, {font_size})
       const range_groups = vstr.makeGroupRangesAutoColor({ranges}, "arrow")
       const ranges = range_groups
         .map((x) => vstr.nonOverlapRanges(x))
