@@ -14,4 +14,4 @@ $ pip install git+https://github.com/kg86/visstr-py
 
 # Example
 
-see [example](examples/occ.ipynb).
+see [examples/occ.ipynb](https://colab.research.google.com/github/kg86/visstr-py/blob/main/examples/occ.ipynb).
